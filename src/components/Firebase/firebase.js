@@ -38,6 +38,7 @@ class Firebase {
     // *** User API ***
 
     user = uid => this.db.ref(`users/${uid}`)
+    getRole = uid => this.db.ref(`users/${uid}/role`)
     users = () => this.db.ref('users')
 
 }
