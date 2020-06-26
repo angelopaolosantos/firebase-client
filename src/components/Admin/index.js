@@ -52,10 +52,15 @@ class AdminPage extends Component {
 
 const UsersList = ({ users }) => (
     <ul>
-        {users.map(user => (
+        {users.map(user => {
+        console.log(user);
+        return (
             <li key={user.uid}>
                 <span>
                     <strong>ID:</strong> {user.uid}
+                </span>
+                <span>
+                    <strong>COMPANY:</strong> {user.company}
                 </span>
                 <span>
                     <strong>E-Mail:</strong> {user.email}
@@ -63,8 +68,13 @@ const UsersList = ({ users }) => (
                 <span>
                     <strong>Username:</strong> {user.username}
                 </span>
+                <span>
+                    <strong>LastLogin:</strong> {user.lastSignInDate}
+                </span>
             </li>
-        ))}
+            )
+        }
+        )}
     </ul>
 )
 
