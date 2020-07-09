@@ -5,6 +5,8 @@ import { compose } from 'recompose'
 import * as ROUTES from '../../constants/routes'
 import { Component } from 'react'
 
+import { Nav } from 'rsuite'
+
 class SignOutButtonBase extends Component {
 
     doSignOut = () => {
@@ -16,9 +18,9 @@ class SignOutButtonBase extends Component {
 
     render() {
         return (
-            <button type="button" onClick={this.doSignOut}>
+            <Nav.Item type="button" onClick={this.doSignOut}>
                 Sign Out
-            </button>
+            </Nav.Item>
         )
     }
 }

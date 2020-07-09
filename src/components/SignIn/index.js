@@ -7,6 +7,8 @@ import { PasswordForgetLink } from '../PasswordForget'
 import { withFirebase } from '../Firebase'
 import * as ROUTES from '../../constants/routes'
 
+import { Form, FormGroup, FormControl, ControlLabel, HelpBlock, Button } from 'rsuite'
+
 const SignInPage = () => (
     <div>
         <h1>SignIn</h1>
@@ -29,6 +31,7 @@ class SignInFormBase extends Component {
     }
 
     onSubmit = event => {
+        console.log(event)
         const { email, password } = this.state
 
         this.props.firebase
@@ -41,10 +44,10 @@ class SignInFormBase extends Component {
                 this.setState({ error })
             })
 
-        event.preventDefault()
+        //event.preventDefault() //rsuitejs has no preventDefault method
     }
 
-    onChange = event => {
+    onChange = (formValue, event) => {
         this.setState({ [event.target.name]: event.target.value })
     }
 
@@ -54,27 +57,36 @@ class SignInFormBase extends Component {
         const isInvalid = password === '' || email === ''
 
         return (
-            <form onSubmit={this.onSubmit}>
-                <input
-                    name="email"
+            <Form onSubmit={this.onSubmit}>
+
+                <FormGroup>
+                    <ControlLabel>Email Address</ControlLabel>
+                    <FormControl 
+                    name="email" 
                     value={email}
                     onChange={this.onChange}
                     type="text"
-                    placeholder="Email Address"
-                />
-                <input
-                    name="password"
-                    value={password}
-                    onChange={this.onChange}
-                    type="password"
-                    placeholder="Password"
-                />
-                <button disabled={isInvalid} type="submit">
-                    Sign In
-                </button>
+                    placeholder="Email Address" 
+                    />
+                    <HelpBlock>Required</HelpBlock>
+                </FormGroup>
+                <FormGroup>
+                    <ControlLabel>Password</ControlLabel>
+                    <FormControl 
+                     name="password"
+                     value={password}
+                     onChange={this.onChange}
+                     type="password"
+                     placeholder="Password"
+                    />
+                    <HelpBlock>Required</HelpBlock>
+                </FormGroup>
+                <FormGroup>
+                    <Button appearance="primary" disabled={isInvalid} type="submit">Sign In</Button>
+                </FormGroup>
 
                 {error && <p>{error.message}</p>}
-            </form>
+            </Form>
         )
     }
 }

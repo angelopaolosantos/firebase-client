@@ -1,7 +1,8 @@
 import React from 'react'
 import { 
     BrowserRouter as Router,
-    Route
+    Route,
+    Switch
 } from 'react-router-dom'
 import Navigation from '../Navigation'
 import LandingPage from '../Landing'
@@ -11,6 +12,10 @@ import PasswordForgetPage from '../PasswordForget'
 import HomePage from '../Home'
 import AccountPage from '../Account'
 import AdminPage from '../Admin'
+import MarketingAssetsPage from '../MarketingAssets'
+import SpiffsPage from '../Spiffs'
+import FormsPage from '../Forms'
+import PageMissingPage from '../PageMissing'
 
 import * as ROUTES from '../../constants/routes'
 import { withAuthentication } from '../Session'
@@ -19,8 +24,7 @@ const App = () => (
     <Router>
         <div>
             <Navigation />
-            <hr />
-
+            <Switch>
             <Route exact path={ROUTES.LANDING} component={LandingPage} />
             <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
             <Route path={ROUTES.SIGN_IN} component={SignInPage} />
@@ -28,6 +32,11 @@ const App = () => (
             <Route path={ROUTES.HOME} component={HomePage} />
             <Route path={ROUTES.ACCOUNT} component={AccountPage} />
             <Route path={ROUTES.ADMIN} component={AdminPage} />
+            <Route path={ROUTES.MARKETING_ASSETS} component={MarketingAssetsPage} />
+            <Route path={ROUTES.SPIFFS} component={SpiffsPage} />
+            <Route path={ROUTES.FORMS} component={FormsPage} />
+            <Route component={PageMissingPage} />
+            </Switch>
         </div>
     </Router>
 )
