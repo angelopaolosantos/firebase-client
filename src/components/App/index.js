@@ -16,6 +16,7 @@ import MarketingAssetsPage from '../MarketingAssets'
 import SpiffsPage from '../Spiffs'
 import FormsPage from '../Forms'
 import PageMissingPage from '../PageMissing'
+import ProductUpload from '../Admin/Products'
 
 import * as ROUTES from '../../constants/routes'
 import { withAuthentication } from '../Session'
@@ -35,6 +36,7 @@ const App = () => (
             <Route path={ROUTES.MARKETING_ASSETS} component={MarketingAssetsPage} />
             <Route path={ROUTES.SPIFFS} component={SpiffsPage} />
             <Route path={ROUTES.FORMS} component={FormsPage} />
+            <Route path={ROUTES.PRODUCT_UPLOAD} component={ProductUpload} />
             <Route component={PageMissingPage} />
             </Switch>
         </div>

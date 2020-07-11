@@ -70,6 +70,12 @@ class Firebase {
     getRole = uid => this.db.ref(`users/${uid}/role`)
     users = () => this.db.ref('users')
 
+    // *** Marketing Assets API
+    marketingAssets = () => this.db.ref(`1YU49BZ_i-HPCoVl_j1Vkt9lo6bg4SsnXtNdgjrsC4fQ/MarketingAssets`)
+
+    // *** Forms API
+    forms = () => this.db.ref(`1YU49BZ_i-HPCoVl_j1Vkt9lo6bg4SsnXtNdgjrsC4fQ/Forms`)
+
 }
 
 export default Firebase
